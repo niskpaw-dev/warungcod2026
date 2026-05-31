@@ -121,6 +121,15 @@ export function renderAdminSettings() {
 export function renderAdminOrders() {
   const orders = getOrders().slice(0, 7);
 
+  const statusMap = {
+    'Pending': 'Menunggu',
+    'Preparing': 'Sedia',
+    'Out for Delivery': 'Hantar',
+    'Delivered': 'Selesai',
+    'Customer Unreachable': 'Gagal Dihubungi',
+    'Cancelled': 'Batal'
+  };
+
   return `
     <div class="space-y-4">
       ${orders.map(order => `
@@ -130,11 +139,11 @@ export function renderAdminOrders() {
               <p class="text-sm text-slate-400">${order.id}</p>
               <h3 class="text-lg font-semibold">${order.customer.name}</h3>
             </div>
-            <span class="status-pill bg-white/5 text-amber-200">${order.status}</span>
+            <span class="status-pill bg-white/5 text-amber-200">${statusMap[order.status] || order.status}</span>
           </div>
           <p class="text-slate-400 text-sm">${order.items.map(item => `${item.quantity}x ${escapeHtml(item.name)}`).join(', ')}</p>
           <div class="flex items-center gap-2 flex-wrap">
-            ${['Preparing', 'Out for Delivery', 'Delivered', 'Cancelled'].map(status => `<button data-action="admin-update-order" data-id="${order.id}" data-status="${status}" class="rounded-2xl bg-white/5 px-3 py-2 text-xs text-white">${status}</button>`).join('')}
+            ${['Preparing', 'Out for Delivery', 'Delivered', 'Cancelled'].map(status => `<button data-action="admin-update-order" data-id="${order.id}" data-status="${status}" class="rounded-2xl bg-white/5 px-3 py-2 text-xs text-white">${statusMap[status] || status}</button>`).join('')}
           </div>
         </div>
       `).join('')}
