@@ -1,0 +1,29 @@
+{
+  "name": "web-app-cod-2026",
+  "version": "1.0.0",
+  "description": "WarungCOD adalah aplikasi makanan mudah alih premium berasaskan PWA yang berjalan sepenuhnya dalam satu fail `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niskpaw-dev/warungcod2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/niskpaw-dev/warungcod2026/issues"
+  },
+  "homepage": "https://github.com/niskpaw-dev/warungcod2026#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0",
+    "vite": "^8.0.14"
+  }
+}
