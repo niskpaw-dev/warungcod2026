@@ -68,14 +68,14 @@ export function generateWhatsAppLink(order) {
   const lines = [
     `Hello ${settings.businessName}!`,
     '',
-    'NEW ORDER RECEIVED',
+    'PESANAN BARU DITERIMA',
     '',
-    `Order ID: ${order.id}`,
-    `Customer: ${order.customer.name}`,
-    `Phone: ${order.customer.phone}`,
-    `Delivery Address: ${order.customer.address}`,
+    `ID Pesanan: ${order.id}`,
+    `Pelanggan: ${order.customer.name}`,
+    `No. Telefon: ${order.customer.phone}`,
+    `Alamat Penghantaran: ${order.customer.address}`,
     '',
-    'ORDER DETAILS:'
+    'BUTIRAN PESANAN:'
   ];
 
   order.items.forEach(item => {
@@ -85,14 +85,14 @@ export function generateWhatsAppLink(order) {
   lines.push(
     '',
     `Subtotal: ${settings.currency}${order.subtotal.toFixed(2)}`,
-    `Delivery: ${settings.currency}${order.delivery.toFixed(2)}`,
-    `TOTAL: ${settings.currency}${order.total.toFixed(2)}`,
+    `Caj Penghantaran: ${settings.currency}${order.delivery.toFixed(2)}`,
+    `JUMLAH: ${settings.currency}${order.total.toFixed(2)}`,
     '',
-    `Notes: ${order.customer.notes || 'None'}`,
+    `Nota: ${order.customer.notes || 'Tiada'}`,
     '',
-    'Payment Method: Cash On Delivery (COD)',
+    'Kaedah Pembayaran: Tunai Semasa Terima (COD)',
     '',
-    'Thank you.'
+    'Terima kasih.'
   );
 
   const encoded = encodeURIComponent(lines.join('\n'));

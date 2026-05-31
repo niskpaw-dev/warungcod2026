@@ -22,7 +22,7 @@ export const DEFAULT_SETTINGS = {
   version: 1,
   businessName: 'WarungCOD',
   ownerName: 'WarungCOD',
-  whatsapp: '60123456789',
+  whatsapp: '601XXXXXXXX', // Tukar kepada nombor telefon sebenar warung anda (mula dengan kod negara)
   currency: 'RM',
   deliveryFee: 3,
   deliveryEta: '20-35 min',

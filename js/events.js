@@ -140,16 +140,26 @@ export function handleAction(event, callbacks) {
       const order = getOrderById(state.trackingOrderId) || state.orderPreview;
       if (!order) return;
       const settings = getSettings();
+      
+      // Terjemahan status ke Bahasa Melayu untuk mesej WhatsApp
+      const statusTranslations = {
+        'Preparing': 'Sedang Disediakan',
+        'Out for Delivery': 'Sedang Dihantar',
+        'Delivered': 'Telah Dihantar',
+        'Customer Unreachable': 'Pelanggan Gagal Dihubungi'
+      };
+      const translatedStatus = statusTranslations[status] || status;
+
       const lines = [
         `Hello ${settings.businessName}!`,
         '',
-        `Order ${order.id} status update: ${status}.`,
+        `Kemas kini status pesanan ${order.id}: ${translatedStatus}.`,
         '',
-        `Customer: ${order.customer.name}`,
-        `Phone: ${order.customer.phone}`,
-        `Address: ${order.customer.address}`,
+        `Pelanggan: ${order.customer.name}`,
+        `No. Telefon: ${order.customer.phone}`,
+        `Alamat: ${order.customer.address}`,
         '',
-        'Please take note.'
+        'Harap maklum.'
       ];
       const encoded = encodeURIComponent(lines.join('\n'));
       window.open(
